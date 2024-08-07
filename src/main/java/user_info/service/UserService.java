@@ -42,11 +42,16 @@ public class UserService {
                 .filter(todo -> todo.getUserId() == userId)
                 .collect(Collectors.toList());
     }
-/*
+
+
+    /*
     public Optional<User> getUserById(int userId) {
         return users.stream().filter(user -> user.getUserId() == userId).findFirst();
     }
 
- */
+     */
+
+
+
 
 }

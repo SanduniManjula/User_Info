@@ -22,6 +22,7 @@ public class UserController {
         return user.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
     /*
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable int userId) {
@@ -30,6 +31,7 @@ public class UserController {
                    .orElseGet(() -> ResponseEntity.notFound().build());
     }
      */
+
 
     @GetMapping("/{userId}/todos")
     public ResponseEntity<List<User>> getTodosByUserId(@PathVariable int userId){
@@ -40,6 +42,7 @@ public class UserController {
         else {
             return ResponseEntity.ok(todos);
         }
+
     }
 }
 

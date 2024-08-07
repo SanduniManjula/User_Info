@@ -15,12 +15,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserDetailsById(@PathVariable int id) {
+        Optional<User> user = userService.getUserDetailsById(id);
+        return user.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    /*
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable int userId) {
         Optional<User> user = userService.getUserById(userId);
         return user.map(ResponseEntity::ok)
                    .orElseGet(() -> ResponseEntity.notFound().build());
     }
+     */
 
     @GetMapping("/{userId}/todos")
     public ResponseEntity<List<User>> getTodosByUserId(@PathVariable int userId){

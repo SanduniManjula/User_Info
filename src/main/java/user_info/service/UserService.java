@@ -24,15 +24,16 @@ public class UserService {
         restTemplate = new RestTemplate();
     }
 
-/*
     @PostConstruct
     public void init() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         URL url = new URL("https://jsonplaceholder.typicode.com/todos");
         users = mapper.readValue(url, new TypeReference<List<User>>(){});
     }
+    public Optional<User> getUserDetailsById(int id) {
+        return users.stream().filter(user -> user.getId() == id).findFirst();
+    }
 
- */
 
     public List<User> getTodosByUserId(int userId) {
         String url = "https://jsonplaceholder.typicode.com/todos";
@@ -41,9 +42,11 @@ public class UserService {
                 .filter(todo -> todo.getUserId() == userId)
                 .collect(Collectors.toList());
     }
-
+/*
     public Optional<User> getUserById(int userId) {
         return users.stream().filter(user -> user.getUserId() == userId).findFirst();
     }
+
+ */
 
 }
